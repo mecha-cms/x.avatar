@@ -7,12 +7,3 @@ Services
 --------
 
  - [Gravatar](https://github.com/mecha-cms/x.gravatar)
-
----
-
-Release Notes
--------------
-
-### 1.0.0
-
- - Initial stable release.
