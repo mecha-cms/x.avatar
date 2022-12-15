@@ -1,5 +1,5 @@
 {
-  "description": "Avatar property to store and display default profile photo.",
+  "description": "Adds avatar property to store and display default profile photo.",
   "license": "GPL-3.0-or-later",
   "name": "mecha-cms/x.avatar"
 }
