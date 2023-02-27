@@ -34,8 +34,8 @@ Hook::set('page.avatar', function (?string $avatar, array $lot = []) {
     // Convert email address from the page to a unique hash
     $hash = md5($this->email);
     // Get the first parameter which indicates the scale size of the profile photo (default scale size is `80`)
-    $s = array_shift($lot) ?: 80;
+    $size = array_shift($lot) ?: 80;
     // Return the profile photo URL
-    return 'https://example.com/service/photo/' . $hash . '.jpg?s=' . $s;
+    return 'https://example.com/service/photo/' . $hash . '.jpg?s=' . $size;
 }, 1);
 ~~~
