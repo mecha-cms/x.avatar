@@ -11,8 +11,9 @@ function avatar($avatar, array $lot = []) {
     }
     // Process local avatar(s) only
     if (false === \strpos($avatar, '://') && 0 === \strpos($avatar, '/') && 0 !== \strpos($avatar, '//')) {
-        $height = \ceil($lot[1] ?? ($width = \ceil($lot[0])));
-        $quality = $lot[2] ?? -1;
+        $width = \ceil(\array_shift($lot) ?: 80);
+        $height = \ceil(\array_shift($lot) ?: $width);
+        $quality = \ceil(\array_shift($lot) ?: -1);
         $x = \pathinfo($avatar, \PATHINFO_EXTENSION) ?: 'jpg';
         $path = \To::path(\long($avatar));
         $store = \LOT . \D . 'image' . \D . 't' . \D . 'avatar' . \D . $width . ($height !== $width ? \D . $height : "") . \D . \dechex(\crc32($avatar . $quality)) . '.' . $x;
