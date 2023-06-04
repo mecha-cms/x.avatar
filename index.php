@@ -1,4 +1,4 @@
-<?php namespace x;
+<?php namespace x\avatar\page;
 
 function avatar($avatar, array $lot = []) {
     if (!$avatar || !\is_string($avatar)) {
