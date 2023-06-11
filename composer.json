@@ -1,5 +1,8 @@
 {
   "description": "Adds avatar property to store and display default profile photo.",
   "license": "GPL-3.0-or-later",
-  "name": "mecha-cms/x.avatar"
+  "name": "mecha-cms/x.avatar",
+  "suggest": {
+    "mecha-cms/x.image": "Install this extension to be able to resize the local avatar image on the fly."
+  }
 }

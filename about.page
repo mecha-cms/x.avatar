@@ -8,22 +8,22 @@ type: Markdown
 version: 1.0.0
 ...
 
-This extension provides an `avatar` property to display default profile photo from the page. The resulting photo is
-expected to be rectangular and can be dynamically resized using the `avatar()` method call. However, this depends
-entirely on the respective services that provide the feature. This extension is only tasked with providing width and
-height data of the image and displaying its default profile photo.
+This extension provides an `avatar` property to display the default profile photo from the page. The resulting photo is
+expected to be rectangular and can be dynamically resized using the `avatar()` method call. However, this is entirely up
+to the services that provide this feature. This extension is only responsible for providing the width and height of the
+image and displaying the default profile photo.
 
 ### Usage
 
 ~~~ .html.php
 <!-- Default avatar image URL -->
-<img alt="" src="<?= $page->avatar; ?>">
+<img alt="" src="<?= eat($page->avatar); ?>">
 
 <!-- Custom avatar image URL, expected to display an image URL where the image width is 80 pixels and the image height is 80 pixels -->
-<img alt="" src="<?= $page->avatar(80); ?>">
+<img alt="" src="<?= eat($page->avatar(80)); ?>">
 ~~~
 
-Third-party services can be added this way to change the output of the default profile photo:
+Third-party services can be added in this way to change the output of the default profile photo:
 
 ~~~ .php
 Hook::set('page.avatar', function (?string $avatar, array $lot = []) {
@@ -36,6 +36,6 @@ Hook::set('page.avatar', function (?string $avatar, array $lot = []) {
     // Get the first parameter which indicates the scale size of the profile photo (default scale size is `80`)
     $size = array_shift($lot) ?: 80;
     // Return the profile photo URL
-    return 'https://example.com/service/photo/' . $hash . '.jpg?s=' . $size;
+    return 'https://example.com/service/photo/' . $hash . '.jpg?size=' . $size;
 }, 1);
 ~~~
