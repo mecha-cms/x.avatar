@@ -5,7 +5,7 @@ icon: 'M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12
 color: '#264466'
 author: Taufik Nurrohman
 type: Markdown
-version: 1.0.0
+version: 1.0.1
 ...
 
 This extension provides an `avatar` property to display the default profile photo from the page. The resulting photo is
@@ -23,7 +23,7 @@ image and displaying the default profile photo.
 <img alt="" src="<?= eat($page->avatar(80)); ?>">
 ~~~
 
-Third-party services can be added in this way to change the output of the default profile photo:
+Third-party services can be added this way to change the output of the default profile photo:
 
 ~~~ .php
 Hook::set('page.avatar', function (?string $avatar, array $lot = []) {
@@ -36,6 +36,6 @@ Hook::set('page.avatar', function (?string $avatar, array $lot = []) {
     // Get the first parameter which indicates the scale size of the profile photo (default scale size is `80`)
     $size = array_shift($lot) ?: 80;
     // Return the profile photo URL
-    return 'https://example.com/service/photo/' . $hash . '.jpg?size=' . $size;
+    return 'https://example.com/service/photo/' . $hash . '.jpg' . (is_int($size) && $size > 0 ? '?size=' . $size : "");
 }, 1);
 ~~~
