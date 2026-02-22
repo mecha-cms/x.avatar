@@ -24,9 +24,9 @@ function page__avatar($avatar, array $lot = []) {
         $blob = new \Image(\is_file($path) ? $path : $avatar);
         // `$page->avatar($width, $height, $quality)`
         $blob->crop($w, $h)->blob($store, $q); // Generate avatar cache
-        $avatar = \To::link($store); // Return the avatar cache URL
-        // Convert direct avatar URL from folder `.\lot\image` to its proxy image URL
-        $avatar = \substr_replace($avatar, $url . '/' . \trim($state->x->image->route ?? 'image', '/') . '/', 0, \strlen($url . '/lot/image/'));
+        $avatar = \To::link($store); // Return the avatar cache link
+        // Convert direct avatar link from folder `.\lot\image` to its proxy image link
+        $avatar = \substr_replace($avatar, \long('/' . \trim($state->x->image->route ?? 'image', '/') . '/'), 0, \strlen(\long('/lot/image/')));
     }
     return $avatar;
 }
